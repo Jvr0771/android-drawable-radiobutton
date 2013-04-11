@@ -37,15 +37,15 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:drawablePadding="20dp"
-                app:button="@drawable/btn_radio_payment"
-                app:buttonHeight="30dp"
+                app:buttonChecked="false"
+                app:buttonDrawable="@drawable/btn_radio_payment"
+                app:buttonDrawableHeight="30dp"
+                app:buttonDrawableWidth="30dp"
                 app:buttonPaddingLeft="10dp"
-                app:buttonWidth="30dp"
-                app:checked="false"
-                app:drawable="@drawable/ic_payment"
-                app:drawableHeight="40dp"
-                app:drawablePadding="50dp"
-                app:drawableWidth="60dp" />
+                app:contentDrawable="@drawable/ic_payment"
+                app:contentDrawableHeight="40dp"
+                app:contentDrawableWidth="60dp"
+                app:contentPaddingLeft="50dp" />
 
             <com.xiaoai.drawableRadioButton.DrawableRadioButton
                 android:id="@+id/btn2"
@@ -54,15 +54,15 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:drawablePadding="20dp"
-                app:button="@drawable/btn_radio_payment"
-                app:buttonHeight="30dp"
+                app:buttonChecked="false"
+                app:buttonDrawable="@drawable/btn_radio_payment"
+                app:buttonDrawableHeight="30dp"
+                app:buttonDrawableWidth="30dp"
                 app:buttonPaddingLeft="10dp"
-                app:buttonWidth="30dp"
-                app:checked="false"
-                app:drawable="@drawable/ic_payment"
-                app:drawableHeight="40dp"
-                app:drawablePadding="50dp"
-                app:drawableWidth="60dp" />
+                app:contentDrawable="@drawable/ic_payment"
+                app:contentDrawableHeight="40dp"
+                app:contentDrawableWidth="60dp"
+                app:contentPaddingLeft="50dp" />
         </RadioGroup>
     </FrameLayout>
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="PaymentButton">
-        <attr name="checked" format="boolean" />
-        <attr name="button" format="reference" />
-        <attr name="buttonWidth" format="dimension" />
-        <attr name="buttonHeight" format="dimension" />
+    <declare-styleable name="DrawableRadioButton">
+        <attr name="buttonChecked" format="boolean" />
         <attr name="buttonPaddingLeft" format="dimension" />
-        <attr name="drawablePadding" format="dimension" />
-        <attr name="drawable" format="reference" />
-        <attr name="drawableWidth" format="dimension" />
-        <attr name="drawableHeight" format="dimension" />
+        <attr name="buttonDrawable" format="reference" />
+        <attr name="buttonDrawableWidth" format="dimension" />
+        <attr name="buttonDrawableHeight" format="dimension" />
+        <attr name="contentPaddingLeft" format="dimension" />
+        <attr name="contentDrawable" format="reference" />
+        <attr name="contentDrawableWidth" format="dimension" />
+        <attr name="contentDrawableHeight" format="dimension" />
     </declare-styleable>
 
 </resources>

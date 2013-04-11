@@ -42,41 +42,46 @@ public class DrawableRadioButton extends RadioButton {
 		this.context = context;
 
 		TypedArray array = context.obtainStyledAttributes(attrs,
-				R.styleable.PaymentButton);
+				R.styleable.DrawableRadioButton);
 
 		buttonPaddingLeft = array.getDimensionPixelSize(
-				R.styleable.PaymentButton_buttonPaddingLeft, 0);
+				R.styleable.DrawableRadioButton_buttonPaddingLeft, 0);
 
-		Drawable drawable = array.getDrawable(R.styleable.PaymentButton_button);
+		Drawable drawable = array
+				.getDrawable(R.styleable.DrawableRadioButton_buttonDrawable);
 		if (drawable != null) {
 			setRadioButtonDrawable(drawable);
 
 			int defWidth = drawable.getIntrinsicWidth();
 			int defHeight = drawable.getIntrinsicHeight();
 			buttonDrawableWidth = array.getDimensionPixelSize(
-					R.styleable.PaymentButton_buttonWidth, defWidth);
+					R.styleable.DrawableRadioButton_buttonDrawableWidth,
+					defWidth);
 			buttonDrawableHeight = array.getDimensionPixelSize(
-					R.styleable.PaymentButton_buttonHeight, defHeight);
+					R.styleable.DrawableRadioButton_buttonDrawableHeight,
+					defHeight);
 		}
 
-		boolean checked = array.getBoolean(R.styleable.PaymentButton_checked,
-				false);
+		boolean checked = array.getBoolean(
+				R.styleable.DrawableRadioButton_buttonChecked, false);
 		setChecked(checked);
 
 		Drawable content = array
-				.getDrawable(R.styleable.PaymentButton_drawable);
+				.getDrawable(R.styleable.DrawableRadioButton_contentDrawable);
 
 		if (content != null) {
 			int defWidth = content.getIntrinsicWidth();
 			int defHeight = content.getIntrinsicHeight();
 			contentDrawableWidth = array.getDimensionPixelSize(
-					R.styleable.PaymentButton_drawableWidth, defWidth);
+					R.styleable.DrawableRadioButton_contentDrawableWidth,
+					defWidth);
 			contentDrawableHeight = array.getDimensionPixelSize(
-					R.styleable.PaymentButton_drawableHeight, defHeight);
+					R.styleable.DrawableRadioButton_contentDrawableHeight,
+					defHeight);
 		}
 
 		contentPaddingLeft = array.getDimensionPixelSize(
-				R.styleable.PaymentButton_drawablePadding, 0);
+				R.styleable.DrawableRadioButton_contentPaddingLeft, 0);
 
 		setContentDrawable(content);
 		setCompoundDrawablePadding(contentPaddingLeft);
