@@ -1,6 +1,6 @@
-package com.xiaoai.drawableRadioButton;
+package com.xiaoai.ImageRadioButton;
 
-import com.xiaoai.drawableRadioButton.R;
+import com.xiaoai.ImageRadioButton.R;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -10,81 +10,82 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.widget.RadioButton;
 
-public class DrawableRadioButton extends RadioButton {
+public class ImageRadioButton extends RadioButton {
 
 	private Drawable buttonDrawable;
 
 	private int buttonDrawableWidth, buttonDrawableHeight;
 
-	private int buttonPaddingLeft;
+	private int buttonDrawablePaddingLeft;
 
-	private Drawable contentDrawable;
+	private Drawable imageDrawable;
 
-	private int contentDrawableWidth, contentDrawableHeight;
+	private int imageDrawableWidth, imageDrawableHeight;
 
-	private int contentPaddingLeft;
+	private int imageDrawablePaddingLeft;
 
 	private Context context;
 
-	public DrawableRadioButton(Context context) {
+	public ImageRadioButton(Context context) {
 		this(context, null);
 	}
 
-	public DrawableRadioButton(Context context, AttributeSet attrs) {
+	public ImageRadioButton(Context context, AttributeSet attrs) {
 		this(context, attrs, 0);
-		setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
-		setFocusable(true);
-		setClickable(true);
 	}
 
-	public DrawableRadioButton(Context context, AttributeSet attrs, int defStyle) {
+	public ImageRadioButton(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		this.context = context;
 
-		TypedArray array = context.obtainStyledAttributes(attrs,
-				R.styleable.DrawableRadioButton);
+		setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+		setFocusable(true);
+		setClickable(true);
 
-		buttonPaddingLeft = array.getDimensionPixelSize(
-				R.styleable.DrawableRadioButton_buttonPaddingLeft, 0);
+		TypedArray array = context.obtainStyledAttributes(attrs,
+				R.styleable.ImageCheckableButton);
+
+		buttonDrawablePaddingLeft = array.getDimensionPixelSize(
+				R.styleable.ImageCheckableButton_buttonPaddingLeft, 0);
 
 		Drawable drawable = array
-				.getDrawable(R.styleable.DrawableRadioButton_buttonDrawable);
+				.getDrawable(R.styleable.ImageCheckableButton_buttonDrawable);
 		if (drawable != null) {
 			setRadioButtonDrawable(drawable);
 
 			int defWidth = drawable.getIntrinsicWidth();
 			int defHeight = drawable.getIntrinsicHeight();
 			buttonDrawableWidth = array.getDimensionPixelSize(
-					R.styleable.DrawableRadioButton_buttonDrawableWidth,
+					R.styleable.ImageCheckableButton_buttonDrawableWidth,
 					defWidth);
 			buttonDrawableHeight = array.getDimensionPixelSize(
-					R.styleable.DrawableRadioButton_buttonDrawableHeight,
+					R.styleable.ImageCheckableButton_buttonDrawableHeight,
 					defHeight);
 		}
 
 		boolean checked = array.getBoolean(
-				R.styleable.DrawableRadioButton_buttonChecked, false);
+				R.styleable.ImageCheckableButton_buttonChecked, false);
 		setChecked(checked);
 
 		Drawable content = array
-				.getDrawable(R.styleable.DrawableRadioButton_contentDrawable);
+				.getDrawable(R.styleable.ImageCheckableButton_imageDrawable);
 
 		if (content != null) {
 			int defWidth = content.getIntrinsicWidth();
 			int defHeight = content.getIntrinsicHeight();
-			contentDrawableWidth = array.getDimensionPixelSize(
-					R.styleable.DrawableRadioButton_contentDrawableWidth,
+			imageDrawableWidth = array.getDimensionPixelSize(
+					R.styleable.ImageCheckableButton_imageDrawableWidth,
 					defWidth);
-			contentDrawableHeight = array.getDimensionPixelSize(
-					R.styleable.DrawableRadioButton_contentDrawableHeight,
+			imageDrawableHeight = array.getDimensionPixelSize(
+					R.styleable.ImageCheckableButton_imageDrawableHeight,
 					defHeight);
 		}
 
-		contentPaddingLeft = array.getDimensionPixelSize(
-				R.styleable.DrawableRadioButton_contentPaddingLeft, 0);
+		imageDrawablePaddingLeft = array.getDimensionPixelSize(
+				R.styleable.ImageCheckableButton_imagePaddingLeft, 0);
 
-		setContentDrawable(content);
-		setCompoundDrawablePadding(contentPaddingLeft);
+		setImageDrawable(content);
+		setCompoundDrawablePadding(imageDrawablePaddingLeft);
 
 		array.recycle();
 	}
@@ -141,8 +142,8 @@ public class DrawableRadioButton extends RadioButton {
 				break;
 			}
 
-			button.setBounds(0 + buttonPaddingLeft, y, buttonDrawableWidth
-					+ buttonPaddingLeft, y + height);
+			button.setBounds(0 + buttonDrawablePaddingLeft, y,
+					buttonDrawableWidth + buttonDrawablePaddingLeft, y + height);
 			button.draw(canvas);
 		}
 	}
@@ -167,37 +168,38 @@ public class DrawableRadioButton extends RadioButton {
 	}
 
 	public void setRadioButtonPadddingLefe(int paddingLeft) {
-		this.buttonPaddingLeft = paddingLeft;
+		this.buttonDrawablePaddingLeft = paddingLeft;
 
 		invalidate();
 		requestLayout();
 	}
 
-	public void setContentDrawable(int resId) {
-		setContentDrawable(context.getResources().getDrawable(resId));
+	public void setImageDrawable(int resId) {
+		setImageDrawable(context.getResources().getDrawable(resId));
 	}
 
-	public void setContentDrawable(Drawable drawable) {
-		this.contentDrawable = drawable;
+	public void setImageDrawable(Drawable drawable) {
+		this.imageDrawable = drawable;
 		if (drawable != null) {
-			drawable.setBounds(contentPaddingLeft, 0, contentPaddingLeft
-					+ contentDrawableWidth, contentDrawableHeight);
+			drawable.setBounds(imageDrawablePaddingLeft, 0,
+					imageDrawablePaddingLeft + imageDrawableWidth,
+					imageDrawableHeight);
 		}
 		setCompoundDrawables(drawable, null, null, null);
 	}
 
-	public void setContentDrawableDimensions(int width, int height) {
-		this.contentDrawableWidth = width;
-		this.contentDrawableHeight = height;
-		setContentDrawable(contentDrawable);
+	public void setImageDrawableDimensions(int width, int height) {
+		this.imageDrawableWidth = width;
+		this.imageDrawableHeight = height;
+		setImageDrawable(imageDrawable);
 
 		invalidate();
 		requestLayout();
 	}
 
-	public void setContentPaddingLeft(int paddingLeft) {
-		this.contentPaddingLeft = paddingLeft;
-		setContentDrawable(contentDrawable);
+	public void setImagePaddingLeft(int paddingLeft) {
+		this.imageDrawablePaddingLeft = paddingLeft;
+		setImageDrawable(imageDrawable);
 
 		invalidate();
 		requestLayout();
